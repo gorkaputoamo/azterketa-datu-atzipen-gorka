@@ -61,6 +61,7 @@ public class GeometriaZerbitzua {
 
     /**
      * Puntu bat poligono baten barruan dagoen egiaztatzen du.
+     * Erpinak
      *
      * @param puntua egiaztatu beharreko puntua
      * @param erpinak poligonoaren erpinak

@@ -120,6 +120,12 @@ public class KoordenatuEntrenatzailea {
 
         System.out.printf("Puntu hurbilena: %s (%s)%n", hurbilena.izena, hurbilena.id);
     }
+    /**
+     * Puntu bat poligono baten barruan badagoen ikusten duen metodoa da.
+     * Poligonoa eta puntuak eskatu eta GeometriaZerbitzuan dagoen metodo batera datuak bialdu egiten dio
+     * Azkenik barruan badagoen edo ez printeatzen du.
+     * @param bilduma
+     */
 
     private static void PuntuaPoligonoBarruan(
             Bilduma bilduma
