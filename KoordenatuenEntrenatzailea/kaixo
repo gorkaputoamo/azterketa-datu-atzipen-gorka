@@ -1,0 +1,69 @@
+{
+  "herrialdeak" : [ {
+    "izena" : "Euskal Herria",
+    "eskualdeak" : [ {
+      "izena" : "Bizkaia",
+      "formak" : [ {
+        "id" : "museoa",
+        "izena" : "Guggenheim Bilbao",
+        "koordenatua" : {
+          "longitudea" : -2.9349,
+          "latitudea" : 43.2687
+        },
+        "koordenatuak" : [ ],
+        "mota" : "puntu"
+      }, {
+        "id" : "zubia",
+        "izena" : "Zubizuri",
+        "koordenatua" : {
+          "longitudea" : -2.9234,
+          "latitudea" : 43.266
+        },
+        "koordenatuak" : [ ],
+        "mota" : "puntu"
+      }, {
+        "id" : "parkea",
+        "izena" : "Parke eredua",
+        "koordenatua" : null,
+        "koordenatuak" : [ {
+          "longitudea" : 0.0,
+          "latitudea" : 0.0
+        }, {
+          "longitudea" : 4.0,
+          "latitudea" : 0.0
+        }, {
+          "longitudea" : 4.0,
+          "latitudea" : 3.0
+        }, {
+          "longitudea" : 0.0,
+          "latitudea" : 3.0
+        } ],
+        "mota" : "poligono"
+      }, {
+        "id" : "ibilbidea",
+        "izena" : "Ibilbide eredua",
+        "koordenatua" : null,
+        "koordenatuak" : [ {
+          "longitudea" : -2.94,
+          "latitudea" : 43.26
+        }, {
+          "longitudea" : -2.93,
+          "latitudea" : 43.27
+        } ],
+        "mota" : "polilinea"
+      } ]
+    }, {
+      "izena" : "Gipuzkoa",
+      "formak" : [ {
+        "id" : "eibar",
+        "izena" : "Eibar",
+        "koordenatua" : {
+          "longitudea" : -2.468,
+          "latitudea" : 43.184
+        },
+        "koordenatuak" : [ ],
+        "mota" : "puntu"
+      } ]
+    } ]
+  } ]
+}

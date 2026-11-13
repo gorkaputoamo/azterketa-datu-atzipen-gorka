@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bilduma>
+    <herrialde izena="Euskal Herria">
+        <eskualde izena="Bizkaia">
+            <puntu id="museoa" izena="Guggenheim Bilbao">
+                <koordenatua longitudea="-2.9349" latitudea="43.2687" />
+            </puntu>
+
+            <puntu id="zubia" izena="Zubizuri">
+                <koordenatua longitudea="-2.9234" latitudea="43.2660" />
+            </puntu>
+
+            <poligono id="parkea" izena="Parke eredua">
+                <koordenatuak>
+                    <koordenatua longitudea="0" latitudea="0" />
+                    <koordenatua longitudea="4" latitudea="0" />
+                    <koordenatua longitudea="4" latitudea="3" />
+                    <koordenatua longitudea="0" latitudea="3" />
+                </koordenatuak>
+            </poligono>
+
+            <polilinea id="ibilbidea" izena="Ibilbide eredua">
+                <koordenatuak>
+                    <koordenatua longitudea="-2.94" latitudea="43.26" />
+                    <koordenatua longitudea="-2.93" latitudea="43.27" />
+                </koordenatuak>
+            </polilinea>
+        </eskualde>
+
+        <eskualde izena="Gipuzkoa">
+            <puntu id="eibar" izena="Eibar">
+                <koordenatua longitudea="-2.468" latitudea="43.184" />
+            </puntu>
+        </eskualde>
+    </herrialde>
+</bilduma>
