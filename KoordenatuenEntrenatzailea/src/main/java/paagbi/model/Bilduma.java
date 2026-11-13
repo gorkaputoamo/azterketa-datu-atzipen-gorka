@@ -167,11 +167,3 @@ public class Bilduma {
 @XmlElements	Permite diferentes tipos de elementos en una misma propiedad.
 @XmlElementWrapper	Añade un elemento contenedor a una colección.
 @XmlTransient	Excluye una propiedad de la serialización XML. */
-
-
-/**List<String> lerroak = Files.readAllLines(Path.of("puntos.csv"));
-
-for (String lerroa : lerroak) {
-    System.out.println(lerroa);
-}
-     */

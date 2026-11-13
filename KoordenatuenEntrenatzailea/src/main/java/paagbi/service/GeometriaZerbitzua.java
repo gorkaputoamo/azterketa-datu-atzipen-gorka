@@ -19,7 +19,7 @@ public class GeometriaZerbitzua {
      * @param bigarrenPuntua bigarren koordenatua
      * @return puntuen arteko distantzia
      */
-    public double distantzia(
+    public static double distantzia(
             Bilduma.Koordenatua lehenPuntua,
             Bilduma.Koordenatua bigarrenPuntua
     ) {
@@ -38,7 +38,7 @@ public class GeometriaZerbitzua {
      * @return poligonoaren azalera
      * @throws IllegalArgumentException poligonoak hiru erpin baino gutxiago baditu
      */
-    public double azalera(List<Bilduma.Koordenatua> erpinak) {
+    public static double azalera(List<Bilduma.Koordenatua> erpinak) {
         if (erpinak == null || erpinak.size() < 3) {
             throw new IllegalArgumentException(
                     "Poligonoak gutxienez 3 erpin behar ditu."
@@ -60,13 +60,53 @@ public class GeometriaZerbitzua {
     }
 
     /**
+     * Puntu bat poligono baten barruan dagoen egiaztatzen du.
+     *
+     * @param puntua egiaztatu beharreko puntua
+     * @param erpinak poligonoaren erpinak
+     * @return {@code true}, puntua poligonoaren barruan badago
+     */
+    public static boolean barruan(
+            Bilduma.Koordenatua puntua,
+            List<Bilduma.Koordenatua> erpinak
+    ) {
+        if (puntua == null || erpinak == null || erpinak.size() < 3) {
+            return false;
+        }
+
+        boolean barruanDago = false;
+
+        for (int i = 0, aurrekoa = erpinak.size() - 1; i < erpinak.size(); aurrekoa = i++) {
+
+            Bilduma.Koordenatua oraingoErpina = erpinak.get(i);
+            Bilduma.Koordenatua aurrekoErpina = erpinak.get(aurrekoa);
+
+            boolean ertzakLatitudeaGurutzatzenDu =
+                    (oraingoErpina.latitudea > puntua.latitudea) != (aurrekoErpina.latitudea > puntua.latitudea);
+
+            if (ertzakLatitudeaGurutzatzenDu) {
+                double ebakiduraLongitudea = (aurrekoErpina.longitudea - oraingoErpina.longitudea)
+                                * (puntua.latitudea - oraingoErpina.latitudea)
+                                / (aurrekoErpina.latitudea - oraingoErpina.latitudea)
+                                + oraingoErpina.longitudea;
+
+                if (puntua.longitudea < ebakiduraLongitudea) {
+                    barruanDago = !barruanDago;
+                }
+            }
+        }
+
+        return barruanDago;
+    }
+
+    /**
      * Bilduma bateko puntu hurbilena aurkitzen du.
      *
      * @param puntua erreferentzia-puntua
      * @param bilduma bilatu beharreko datuen bilduma
      * @return puntu hurbilena duen forma, edo {@code null} puntu erabilgarririk ez badago
      */
-    public Bilduma.Forma hurbilena(
+    public static Bilduma.Forma hurbilena(
             Bilduma.Koordenatua puntua,
             Bilduma bilduma
     ) {

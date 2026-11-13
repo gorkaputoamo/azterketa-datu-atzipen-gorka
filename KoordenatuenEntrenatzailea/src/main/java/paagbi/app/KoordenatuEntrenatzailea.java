@@ -19,7 +19,7 @@ public class KoordenatuEntrenatzailea {
 
     public static void main(String[] args) {
         FitxategiZerbitzua fitxategiZerbitzua = new FitxategiZerbitzua();
-        GeometriaZerbitzua geometriaZerbitzua = new GeometriaZerbitzua();
+    //    GeometriaZerbitzua geometriaZerbitzua = new GeometriaZerbitzua();
         Bilduma bilduma;
 
         try {
@@ -38,11 +38,12 @@ public class KoordenatuEntrenatzailea {
             try {
                 switch (aukera) {
                     case "1" -> erakutsiFormak(bilduma);
-                    case "2" -> kalkulatuDistantzia(geometriaZerbitzua);
-                    case "3" -> kalkulatuAzalera(bilduma, geometriaZerbitzua);
-                    case "4" -> bilatuPuntuHurbilena(bilduma, geometriaZerbitzua);
+                    case "2" -> kalkulatuDistantzia();
+                    case "3" -> kalkulatuAzalera(bilduma);
+                    case "4" -> bilatuPuntuHurbilena(bilduma);
                     case "5" -> esportatuJson(bilduma, fitxategiZerbitzua);
                     case "6" -> bilduma = inportatuJson(fitxategiZerbitzua);
+                    case "7" -> PuntuaPoligonoBarruan(bilduma);
                     case "0" -> amaitu = true;
                     default -> System.out.println("Aukera baliogabea.");
                 }
@@ -62,6 +63,7 @@ public class KoordenatuEntrenatzailea {
                 4. Puntu hurbilena bilatu
                 5. JSONera esportatu
                 6. JSONtik inportatu
+                7. Puntua poligono barruan dagoen egiaztatu
                 0. Irten
                 """);
         System.out.print("Aukera: ");
@@ -85,33 +87,31 @@ public class KoordenatuEntrenatzailea {
         }
     }
 
-    private static void kalkulatuDistantzia(GeometriaZerbitzua geometriaZerbitzua) {
+    private static void kalkulatuDistantzia() {
         System.out.println("Sartu lehen puntua:");
         Bilduma.Koordenatua lehenPuntua = eskatuPuntua();
 
         System.out.println("Sartu bigarren puntua:");
         Bilduma.Koordenatua bigarrenPuntua = eskatuPuntua();
 
-        double distantzia = geometriaZerbitzua.distantzia(lehenPuntua, bigarrenPuntua);
+        double distantzia = GeometriaZerbitzua.distantzia(lehenPuntua, bigarrenPuntua);
         System.out.printf(Locale.ROOT, "Distantzia: %.5f unitate%n", distantzia);
     }
 
     private static void kalkulatuAzalera(
-            Bilduma bilduma,
-            GeometriaZerbitzua geometriaZerbitzua
+            Bilduma bilduma
     ) {
         Bilduma.Forma poligonoa = aukeratuPoligonoa(bilduma);
-        double azalera = geometriaZerbitzua.azalera(poligonoa.koordenatuak);
+        double azalera = GeometriaZerbitzua.azalera(poligonoa.koordenatuak);
 
         System.out.printf(Locale.ROOT, "Azalera: %.5f unitate karratu%n", azalera);
     }
 
     private static void bilatuPuntuHurbilena(
-            Bilduma bilduma,
-            GeometriaZerbitzua geometriaZerbitzua
+            Bilduma bilduma
     ) {
         Bilduma.Koordenatua puntua = eskatuPuntua();
-        Bilduma.Forma hurbilena = geometriaZerbitzua.hurbilena(puntua, bilduma);
+        Bilduma.Forma hurbilena = GeometriaZerbitzua.hurbilena(puntua, bilduma);
 
         if (hurbilena == null) {
             System.out.println("Ez dago punturik.");
@@ -120,7 +120,21 @@ public class KoordenatuEntrenatzailea {
 
         System.out.printf("Puntu hurbilena: %s (%s)%n", hurbilena.izena, hurbilena.id);
     }
-    
+
+    private static void PuntuaPoligonoBarruan(
+            Bilduma bilduma
+    ) {
+        Bilduma.Forma poligonoa = aukeratuPoligonoa(bilduma);
+        Bilduma.Koordenatua puntua = eskatuPuntua();
+
+        boolean barruan = GeometriaZerbitzua.barruan(puntua, poligonoa.koordenatuak);
+
+        System.out.println(
+                barruan
+                        ? "Puntua poligonoaren barruan dago."
+                        : "Puntua poligonoaren kanpoan dago."
+        );
+    }
 
     private static void esportatuJson(
             Bilduma bilduma,
